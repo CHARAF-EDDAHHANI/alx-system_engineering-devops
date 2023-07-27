@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#displays num from 1 to 20 in add to:
+#	"bad luck from china" for the 4th iteration
+	"bad luck from japan" for the 9th iteration
+	"bad luck from italy" for the 17th loop iteration
+
+count=1
+
+while [ $count -le 20 ]
+do
+  echo "$count"
+  case $count in
+    "4") echo "bad luck from china";;
+    "9") echo "bad luck from japan";;
+    "17") echo "bad luck from italy";;
+  esac
+  (( count++ ))
+done
