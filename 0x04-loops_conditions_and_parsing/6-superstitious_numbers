@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#displays num from 1 to 20 in add to:
-#	"bad luck from china" for the 4th iteration
-#	"bad luck from japan" for the 9th iteration
-#	"bad luck from italy" for the 17th loop iteration
+# displays num from 1 to 20 in add to:
+#	    "bad luck from china" for the 4th iteration
+#   	"bad luck from japan" for the 9th iteration
+#   	"bad luck from italy" for the 17th loop iteration
 
 count=1
 
