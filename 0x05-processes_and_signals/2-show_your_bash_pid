@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# display a list f currently running processes containing the
+# shellneck disable=sc2009
+
+ps -aux | grep bash
+
+
+
+
