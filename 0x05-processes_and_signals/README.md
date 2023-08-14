@@ -67,9 +67,6 @@ In this project, I learned about handling process ID's and signals in Bash with 
     * Displays `manage_my_process started`.
   * Otherwise, displays `Usage: manage_my_process {start|stop|restart}`.
 
-
-![alt text](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/255/C6mO7b3.jpg)
-
 * **11. Zombie**
   * [102-zombie.c](./102-zombie.c): C program that creates five zombie processes.
   * For every zombie created, displays `Zombie process created, PID: <ZOMBIE_PID>`.
