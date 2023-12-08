@@ -21,20 +21,19 @@ defaults
 frontend www-http
     bind   0.0.0.0:80
     http-request set-header X-Forwarded-Proto http
-    default_backend www-backend
+    redirect scheme https code 301 if !{ ssl_fc }
 
 frontend www-https
-    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.bdbnb.site.pem
-     http-request set-header X-Forwarded-Proto https
+    bind   0.0.0.0:443 ssl crt /etc/letsencrypt/live/www.timetocode.com/fullchain.pem
+    http-request set-header X-Forwarded-Proto https
     acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
     default_backend www-backend
 
 backend www-backend
     balance  roundrobin
-    redirect scheme https if !{ ssl_fc }
-    server 375-web-01 100.25.33.65:80 check
-    server 375-web-02 100.26.132.73:80 check
+    server 370185-web-01 100.25.33.65:80 check
+    server 370185-web-02 100.26.132.73:80 check
 
 backend letsencrypt-backend
-    server letsencrypt 192.168.8.100:54321
+    server letsencrypt 127.0.0.1:54321
