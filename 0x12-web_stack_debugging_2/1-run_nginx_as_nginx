@@ -21,8 +21,8 @@ echo "server {
 # Create the necessary directories
 mkdir -p /var/www/html
 
-# Change ownership of /var/www/html to nginx user
-chown -R nginx:nginx /var/www/html
+# Change ownership of /var/www/html to www-data user
+chown -R www-data:www-data /var/www/html
 
 # Restart nginx to apply changes
 service nginx restart
