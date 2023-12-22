@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Backup the default nginx configuration file
+mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+# Create a new nginx configuration file
+echo "server {
+    listen 8080 default_server;
+    listen [::]:8080 default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Create the necessary directories
+mkdir -p /var/www/html
+
+# Change ownership of /var/www/html to nginx user
+chown -R nginx:nginx /var/www/html
+
+# Restart nginx to apply changes
+service nginx restart
+
+# Display process information to confirm changes
+ps auxff | grep ngin[x]
+
+# Check if nginx is listening on port 8080
+nc -z 0 8080 ; echo $?
+
