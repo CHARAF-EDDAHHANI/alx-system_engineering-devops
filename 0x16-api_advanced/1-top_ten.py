@@ -1,19 +1,21 @@
 #!/usr/bin/python3
 """
-this doc for module
+Module 1-top_ten that contains the function top_ten
 """
 import requests
 
-headers = {"User-Agent": "MyCustomUserAgent/1.0"}
-
 
 def top_ten(subreddit):
-    """method doc"""
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
-    response = requests.get(url, allow_redirects=False, headers=headers)
-    if response.status_code == 200:
-        data = response.json()
-        for post in data["data"]["children"]:
-            print(post["data"]["title"])
-    else:
-        print("None")
+    """function that queries the Reddit API and prints the
+    titles of the first 10 hot posts listed for a given
+    subreddit
+    """
+    url = 'http://www.reddit.com/r/{}/hot/.json'.format(subreddit)
+    headers = {'User-Agent': '0x16-api_advanced:project:v1.0.0'}
+    params = {'limit': 10}
+    r = requests.get(url, headers=headers, params=params)
+    if r.status_code == 200:
+        data = r.json().get('data')
+        [print(child["data"]["title"]) for child in data["children"]]
+        return
+    print('None')
