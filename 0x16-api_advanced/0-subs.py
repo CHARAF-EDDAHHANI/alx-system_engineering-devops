@@ -40,9 +40,6 @@ if __name__ == "__main__":
         subscribers = number_of_subscribers(subreddit_name)
 
         if subscribers is not None:
-            if subscribers > 0:
-                print(f"The subreddit '{subreddit_name}' has {subscribers} subscribers.")
-            else:
-                print(f"The subreddit '{subreddit_name}' has 0 subscribers.")
+            print(f"The subreddit '{subreddit_name}' has {subscribers} subscribers.")
         else:
             print(f"Failed to retrieve subscriber count for subreddit '{subreddit_name}'.")
