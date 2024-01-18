@@ -1,46 +1,32 @@
 #!/usr/bin/python3
 """
-This module provides a recursive function to retrieve the titles of all hot articles for a given subreddit.
+This module provides a function to retrieve the number of subscribers for a subreddit.
 """
 
 import requests
 
 HEADERS = {"User-Agent": "MyCustomUserAgent/1.0"}
 
-def recurse(subreddit, hot_list=[], after=None):
+def number_of_subscribers(subreddit):
     """
-    Recursive function to retrieve titles of hot articles from Reddit API.
+    Retrieve the number of subscribers for a given subreddit.
 
     Args:
-        subreddit (str): The subreddit to search.
-        hot_list (list): List to store titles (default is an empty list).
-        after (str): Token for pagination (default is None).
+        subreddit (str): The name of the subreddit.
 
     Returns:
-        List of titles if successful, None otherwise.
+        int: The number of subscribers, or None if an error occurs.
     """
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
-    params = {'limit': 100, 'after': after}
-    response = requests.get(url, headers=HEADERS, params=params, allow_redirects=False)
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    response = requests.get(url, headers=HEADERS, allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json().get('data', {})
-        children = data.get('children', [])
-
-        for child in children:
-            title = child.get('data', {}).get('title', '')
-            hot_list.append(title)
-
-        after = data.get('after')
-        if after:
-            # Recursively call the function for the next page
-            recurse(subreddit, hot_list, after)
-        else:
-            return hot_list
-
-    else:
-        # If the subreddit is not valid or no results are found, return None
-        print(f"Error: {response.status_code}")
+    try:
+        response.raise_for_status()  # Raises HTTPError for bad responses
+        data = response.json()
+        return data["data"]["subscribers"]
+    except requests.exceptions.RequestException as e:
+        # Print the error message for debugging
+        print(f"Error: {e}")
         return None
 
 # Example usage:
@@ -50,8 +36,13 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please pass an argument for the subreddit to search.")
     else:
-        result = recurse(sys.argv[1])
-        if result is not None:
-            print(len(result))
+        subreddit_name = sys.argv[1]
+        subscribers = number_of_subscribers(subreddit_name)
+
+        if subscribers is not None:
+            if subscribers > 0:
+                print(f"The subreddit '{subreddit_name}' has {subscribers} subscribers.")
+            else:
+                print(f"The subreddit '{subreddit_name}' has 0 subscribers.")
         else:
-            print("None")
+            print(f"Failed to retrieve subscriber count for subreddit '{subreddit_name}'.")
