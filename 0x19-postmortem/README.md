@@ -37,4 +37,5 @@ We are constantly stormed by a quantity of information, it’s tough to get peop
 Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
 
 Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
-solution : <a href='https://docs.google.com/document/d/1dsxZ9OaEr_vRPxzxfsnfWHsg-158D22Mm0e_kxoL91I/edit?usp=sharing'>link to document solution</a>
+
+SOLUTION : <a href='https://docs.google.com/document/d/1dsxZ9OaEr_vRPxzxfsnfWHsg-158D22Mm0e_kxoL91I/edit?usp=sharing'>link to document solution</a>
