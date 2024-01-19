@@ -27,6 +27,8 @@ Be brief and straight to the point, between 400 to 600 words
 
 While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
 
+SOLUTION : <a href='https://docs.google.com/document/d/1JSZME5Tt8t3wrV5zUSMJRwQo8EDIhUAwgZxeebVJJnA/edit?usp=sharing'>link to document solution</a>
+
 #TASK 2 :
  Make people want to read your postmortem
 #advanced
@@ -35,3 +37,4 @@ We are constantly stormed by a quantity of information, it’s tough to get peop
 Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
 
 Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
+solution : <a href='https://docs.google.com/document/d/1dsxZ9OaEr_vRPxzxfsnfWHsg-158D22Mm0e_kxoL91I/edit?usp=sharing'>link to document solution</a>
